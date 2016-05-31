@@ -17,16 +17,31 @@ Car.prototype = {
     return "This is a " +  this.make + " " + this.model;
   },
   passengerList: function() {
+    var self = this;
     if (this.passengers.length === 0) {
       return "no passengers";
     }
     else if (this.passengers.length === 1) {
       return this.passengers[0];
     }
-    else {
-    this.passenger.forEach(function(passenger){
-      console.log(passenger);
-    });
-   }
+    else if (this.passengers.length > 2) {
+      var strOfPassengers = '';
+      self.passengers.forEach(function(passenger, index) {
+        if (index === 0 || index === 1) {
+          strOfPassengers += passenger + ',' + " ";
+        }
+        else {
+          strOfPassengers += 'and' + ' ' + passenger;
+        }
+      });
+      return strOfPassengers;
+     }
   }
+}
+
+function ChevyCar(){}
+ChevyCar.prototype = new Car();
+ChevyCar.prototype.breakDown = function(){}
+ChevyCar.prototype.honk = function(){
+  return "boop boop";
 }
