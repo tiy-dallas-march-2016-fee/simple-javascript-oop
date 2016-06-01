@@ -27,11 +27,11 @@ Car.prototype = {
     else if (this.passengers.length > 2) {
       var strOfPassengers = '';
       self.passengers.forEach(function(passenger, index) {
-        if (index === 0 || index === 1) {
-          strOfPassengers += passenger + ',' + " ";
+        if (index === self.passengers.length - 1) {
+          strOfPassengers += 'and' + ' ' + passenger;
         }
         else {
-          strOfPassengers += 'and' + ' ' + passenger;
+          strOfPassengers += passenger + ',' + " ";
         }
       });
       return strOfPassengers;
